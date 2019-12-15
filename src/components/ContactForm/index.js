@@ -5,8 +5,18 @@ const ContactForm = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
+  const clearInputs = event => {
+    console.log('clearing');
+    event.preventDefault();
+    
+    setName('');
+    setEmail('');
+    setMessage('');
+
+  }
+
   return (
-    <form className="contact-form">
+    <form className="contact-form" onSubmit={() => clearInputs} >
       <label className="form-label">
         Name
         <input
