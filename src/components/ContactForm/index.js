@@ -15,6 +15,7 @@ const ContactForm = () => {
           defaultValue={name}
           placeholder="Name"
           onChange={event => setName(event.target.value)}
+          data-testid="input-element"
           required
         />
       </label>
@@ -26,6 +27,7 @@ const ContactForm = () => {
           defaultValue={email}
           placeholder="Email"
           onChange={event => setEmail(event.target.value)}
+          data-testid="input-element"
           required
         />
       </label>
@@ -36,6 +38,7 @@ const ContactForm = () => {
           placeholder="Message"
           onChange={event => setMessage(event.target.value)}
           defaultValue={message}
+          data-testid="input-element"
         />
       </label>
       <button type="submit">Contact Us</button>
