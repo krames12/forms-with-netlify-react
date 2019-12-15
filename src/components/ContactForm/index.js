@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -6,36 +6,39 @@ const ContactForm = () => {
   const [message, setMessage] = useState('');
 
   return (
-    <form>
-      <label>
+    <form className="contact-form">
+      <label className="form-label">
         Name
-        <input 
+        <input
+          className="form-input"
           type="text"
-          value={name}
+          defaultValue={name}
           placeholder="Name"
           onChange={event => setName(event.target.value)}
           required
         />
       </label>
-      <label>
+      <label className="form-label">
         Email
-        <input 
+        <input
+          className="form-input"
           type="email"
-          value={email}
+          defaultValue={email}
           placeholder="Email"
           onChange={event => setEmail(event.target.value)}
           required
         />
       </label>
-      <label>
+      <label className="form-label">
         Message
-        <textarea 
+        <textarea
+          className="form-input"
           placeholder="Message"
           onChange={event => setMessage(event.target.value)}
-        >
-          {message}
-        </textarea>
+          defaultValue={message}
+        />
       </label>
+      <button type="submit">Contact Us</button>
     </form>
   )
 }
