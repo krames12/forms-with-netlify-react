@@ -20,16 +20,14 @@ const ContactForm = () => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", name, email, message })
     })
-      .then(() => clearInputs())
+      .then(() => {
+        setName('');
+        setEmail('');
+        setMessage('');
+      })
       .catch(error => alert(error));
   }
-
-  const clearInputs = () => {
-    setName('');
-    setEmail('');
-    setMessage('');
-  }
-
+  
   return (
     <form onSubmit={handleSubmit} >
       <input type="hidden" name="form-name" value="contact" />
