@@ -1,25 +1,42 @@
 import React, {useState} from 'react'
 
+
+const encode = (data) => {
+  return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+}
+
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
-  const clearInputs = event => {
-    console.log('clearing');
+  const handleSubmit = event => {
     event.preventDefault();
-    
+
+    fetch('/', {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", name, email, message })
+    })
+      .then(() => clearInputs())
+      .catch(error => alert(error));
+  }
+
+  const clearInputs = () => {
     setName('');
     setEmail('');
     setMessage('');
-
   }
 
   return (
-    <form className="contact-form" onSubmit={() => clearInputs} >
+    <form onSubmit={handleSubmit} >
+      <input type="hidden" name="form-name" value="contact" />
       <label className="form-label">
         Name
         <input
+          name="name"
           className="form-input"
           type="text"
           defaultValue={name}
@@ -32,6 +49,7 @@ const ContactForm = () => {
       <label className="form-label">
         Email
         <input
+          name="email"
           className="form-input"
           type="email"
           defaultValue={email}
@@ -44,6 +62,7 @@ const ContactForm = () => {
       <label className="form-label">
         Message
         <textarea
+          name="message"
           className="form-input"
           placeholder="Message"
           onChange={event => setMessage(event.target.value)}
