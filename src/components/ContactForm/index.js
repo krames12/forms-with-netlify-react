@@ -21,6 +21,7 @@ const ContactForm = () => {
       body: encode({ "form-name": "contact", name, email, message })
     })
       .then(() => {
+        console.log("WE GOT EM");
         setName('');
         setEmail('');
         setMessage('');
