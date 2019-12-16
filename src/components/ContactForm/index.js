@@ -27,10 +27,9 @@ const ContactForm = () => {
       })
       .catch(error => alert(error));
   }
-  
+
   return (
     <form onSubmit={handleSubmit} >
-      <input type="hidden" name="form-name" value="contact" />
       <label className="form-label">
         Name
         <input
