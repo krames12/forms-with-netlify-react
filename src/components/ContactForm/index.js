@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 
 const encode = (data) => {
   return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
 }
 
 const ContactForm = () => {
@@ -24,7 +24,7 @@ const ContactForm = () => {
         console.log("WE GOT EM");
         setName('');
         setEmail('');
-        setMessage('');
+        setMessage('Yup it works');
       })
       .catch(error => alert(error));
   }
